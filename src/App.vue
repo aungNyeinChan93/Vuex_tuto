@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <section>
+    <TodoComponent />
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from "vue";
+import { ref } from "vue";
+import store from "./store";
+import TodoComponent from "../src/components/TodoComponent.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
-</script>
+    TodoComponent,
+  },
+  setup() {
+    onMounted(() => {
+      console.log(store.state);
+    });
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    const data = ref(store.state.Test.name);
+
+    return { data };
+  },
+};
+</script>
