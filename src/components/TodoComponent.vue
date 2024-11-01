@@ -16,11 +16,12 @@
         </li>
       </ul>
     </div>
+
     <h2>{{ $store.getters.onlyTwo[0].title }}</h2>
 
     <div class="card">
       <ul>
-        <li v-for="c in getCustomers" :key="c.id">{{ c.name }}jkhkhjkh</li>
+        <li v-for="c in getCustomers" :key="c.id">{{ c.name }}</li>
       </ul>
     </div>
   </section>
@@ -32,6 +33,7 @@ import { computed, onMounted } from "vue";
 import store from "@/store";
 export default {
   setup() {
+    // const store = useStore()
     const myTodos = computed(() => {
       return store.getters.myTodos;
     });
@@ -40,7 +42,10 @@ export default {
       // console.log(store);
     });
 
-    return { myTodos };
+    return {
+      myTodos,
+      getCustomers: computed(() => store.getters.getCustomers),
+    };
   },
 };
 </script>
