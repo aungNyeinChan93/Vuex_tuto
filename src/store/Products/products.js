@@ -16,6 +16,11 @@ export default {
     setProducts(state, data) {
       state.products = data;
     },
+    menClothing(state) {
+      state.products = state.products.filter(
+        (p) => p.category == "men's clothing"
+      );
+    },
   },
   actions: {
     async getProducts({ commit }) {

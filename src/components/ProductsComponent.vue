@@ -8,6 +8,9 @@
       <button class="btn btn-danger ms-2" @click="status = !status">
         TopTen
       </button>
+      <button class="btn btn-success mx-2" @click="menClothing">
+        Men Clothing
+      </button>
 
       <div class="row">
         <!-- true -->
@@ -17,6 +20,7 @@
               {{ product.id }} || {{ product.title }}
             </div>
             <div class="card-body">
+              <small>{{ product.category }}</small>
               <p>{{ product.description }}</p>
             </div>
           </div>
@@ -32,6 +36,7 @@
               {{ product.id }} || {{ product.title }}
             </div>
             <div class="card-body">
+              <small>{{ product.category }}</small>
               <p>{{ product.description }}</p>
             </div>
           </div>
@@ -58,6 +63,7 @@ export default {
       actionProduct: () => store.dispatch("getProducts"),
       getProducts: computed(() => store.getters.getProducts),
       topTen: computed(() => store.getters.topTen),
+      menClothing: () => store.commit("menClothing"),
     };
   },
 };
