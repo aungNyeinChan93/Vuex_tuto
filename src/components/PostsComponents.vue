@@ -6,6 +6,9 @@
         <div class="col-10 offset-1">
           <PostComponent />
         </div>
+        <div class="col-3 offset-1 my-2">
+          <PostLimitComponent />
+        </div>
       </div>
       <div class="row">
         <div class="col-4 my-2" v-for="post in getPosts" :key="post">
@@ -25,10 +28,12 @@
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import PostComponent from "./PostComponent.vue";
+import PostLimitComponent from "./PostLimitComponent.vue";
 
 export default {
   components: {
     PostComponent,
+    PostLimitComponent,
   },
   setup() {
     const store = useStore();

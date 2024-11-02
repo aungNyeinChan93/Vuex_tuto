@@ -24,14 +24,14 @@ export default {
 
   actions: {
     fetchPosts: async ({ commit }) => {
-      const response = await axios.get("http://localhost:4000/products");
-      console.log(response);
+      const response = await axios.get("https://fakestoreapi.com/products");
+      // console.log(response);
       commit("setPosts", response.data);
     },
 
     addPost: async (context, newPost) => {
       const response = await axios.post(
-        "http://localhost:4000/products",
+        "https://fakestoreapi.com/products",
         newPost
       );
 
@@ -40,9 +40,18 @@ export default {
     },
 
     deletePost: async (context, removeId) => {
-      await axios.delete(`http://localhost:4000/products/`, removeId);
+      await axios.delete(`https://fakestoreapi.com/products/${removeId}`);
       context.commit("deletePost", removeId);
-      console.log("deletepost");
+      // console.log("deletepost");
+    },
+
+    limitPosts: async (context, limit) => {
+      const response = await axios.get(
+        `https://fakestoreapi.com/products?limit=${limit}`
+      );
+      console.log(limit, response.data);
+
+      context.commit("setPosts", response.data);
     },
   },
 };

@@ -2,8 +2,8 @@
   <section>
     <div class="container">
       <div class="input-group">
-        <input type="text" class="form-control" v-model="newPost.title.title" />
-        <button class="btn btn-primary" @click="addPost(newPost.title)">
+        <input type="text" class="form-control" v-model="newPost.post.title" />
+        <button class="btn btn-primary" @click="addPost(newPost)">
           Add Post
         </button>
       </div>
@@ -18,7 +18,7 @@ import { reactive } from "vue";
 export default {
   setup() {
     const newPost = reactive({
-      title: {
+      post: {
         title: null,
       },
     });
