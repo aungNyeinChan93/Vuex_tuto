@@ -12,9 +12,13 @@
       </div>
       <div class="row">
         <div class="col-4 my-2" v-for="post in getPosts" :key="post">
-          <div class="card">
+          <div
+            class="card"
+            :class="{ 'bg-primary': completed }"
+            @click="changeBG"
+          >
             <div class="card-body d-flex justify-content-between">
-              <div>({{ post.id }} || {{ post.title }})</div>
+              <div>({{ post.id }} || {{ post.title.substring(0, 30) }})</div>
               <span class="btn btn-close" @click="deletePost(post.id)"></span>
             </div>
           </div>
@@ -25,7 +29,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import PostComponent from "./PostComponent.vue";
 import PostLimitComponent from "./PostLimitComponent.vue";
@@ -37,6 +41,7 @@ export default {
   },
   setup() {
     const store = useStore();
+    const completed = ref(false);
 
     onMounted(() => {
       // console.log(store.state.Posts.name);
@@ -47,8 +52,14 @@ export default {
       store.dispatch("fetchPosts");
     };
 
+    const changeBG = () => {
+      completed.value = !completed.value;
+    };
+
     return {
+      completed,
       asyncPosts,
+      changeBG,
       getPosts: computed(() => store.getters.getPosts),
       deletePost: () => store.dispatch("deletePost"),
     };

@@ -5,11 +5,13 @@ export default {
     name: "posts",
     posts: [],
   },
+
   getters: {
     getPosts: (state) => {
       return state.posts;
     },
   },
+
   mutations: {
     setPosts: (state, data) => {
       return (state.posts = data);
