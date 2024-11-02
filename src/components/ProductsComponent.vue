@@ -62,7 +62,7 @@ export default {
       status,
       actionProduct: () => store.dispatch("getProducts"),
       getProducts: computed(() => store.getters.getProducts),
-      topTen: computed(() => store.getters.topTen),
+      topTen: computed(() => store.getters.topTen), //should not
       menClothing: () => store.commit("menClothing"),
     };
   },

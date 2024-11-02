@@ -26,7 +26,7 @@ export default {
     async getProducts({ commit }) {
       const response = await axios.get("http://localhost:4000/products");
       const data = response.data;
-      console.log(data);
+      //   console.log(data);
       commit("setProducts", data);
     },
   },
